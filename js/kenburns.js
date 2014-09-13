@@ -213,24 +213,24 @@
 		that.doTransition();
 		this.interval = setInterval(function(){
 
-		//Advance the current slide
-		if(currentSlide < that.maxSlides-1){
-			currentSlide++;
-		}else {
-			currentSlide = 0;
-		}
-					
-		//Check if the next slide is loaded. If not, wait.
-		if(imagesObj["image"+currentSlide].loaded == false){
-			that.holdup = currentSlide;
-			that.wait();
+			//Advance the current slide
+			if(currentSlide < that.maxSlides-1){
+				currentSlide++;
+			}else {
+				currentSlide = 0;
+			}
+						
+			//Check if the next slide is loaded. If not, wait.
+			if(imagesObj["image"+currentSlide].loaded == false){
+				that.holdup = currentSlide;
+				that.wait();
 
-		//if the next slide is loaded, go ahead and do the transition. 
-		}else {
-			that.doTransition();
-		}
+			//if the next slide is loaded, go ahead and do the transition. 
+			}else {
+				that.doTransition();
+			}
 
-	},this.options.duration);
+		}, this.options.duration);
 }
 
 
