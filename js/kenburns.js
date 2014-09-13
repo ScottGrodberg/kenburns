@@ -27,7 +27,7 @@
 	------------------------------------------------------------------------------------------------- */
 	var pluginName = 'Kenburns';
 	var defaults = {
-		images:[],
+		slides:[],
 		duration:400,
 		fadeSpeed:500,
 		scale:1,
@@ -48,7 +48,7 @@
 		this.options = $.extend( {}, defaults, options) ;
 		this._defaults = defaults;
 		this._name = pluginName;
-		this.maxSlides = this.options.images.length;
+		this.maxSlides = this.options.slides.length;
 		
 		this.init();
 	}
@@ -62,7 +62,7 @@
 	 */
 	Plugin.prototype.init = function () {
 
-		var list = this.options.images;
+		var list = this.options.slides;
 		var that = this;
 
 		this.width = $(this.element).width();
@@ -73,7 +73,7 @@
 		for (i in list) {
 			imagesObj["image"+i] = {};
 			imagesObj["image"+i].loaded = false;
-			this.attachImage(list[i], "image"+i , i);
+			this.attachImage(list[i].image, "image"+i , i);
 			
 		}
 
