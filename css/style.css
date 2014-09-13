@@ -111,14 +111,10 @@ but you could also use a gif to better handle ie8*/
 #kenburns-description a:visited{
 	color:white;
 }
-.title {
-	clear: left;
-	margin:0;
-	padding:15px 0 0 0;
-}
+
 #slide-title{
 	font-size: 12px;
-	float:left;
+
 	color:#7085B3;
 }
 #status{
