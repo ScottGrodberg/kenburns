@@ -48,7 +48,7 @@
 		this.options = $.extend( {}, defaults, options) ;
 		this._defaults = defaults;
 		this._name = pluginName;
-		this.maxSlides = this.options.slides.length;
+		this.maxSlides = this.options.slides.length; // must be at least 2 slides for it to work
 		
 		this.init();
 	}
@@ -81,6 +81,9 @@
 		loader.addClass('loader');
 		loader.css({'position':'absolute','z-index':10000});
 		$(this.element).prepend(loader);
+		
+
+		
 	};
 
 
