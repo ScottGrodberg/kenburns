@@ -32,8 +32,7 @@
 		fadeSpeed:500,
 		scale:1,
 		ease3d:'cubic-bezier(.81, 0, .26, 1)',
-		onLoadingComplete:function(){},
-		onSlideComplete:function(){},
+		onLoadingComplete:function(){},		
 		onListComplete:function(){},
 		getSlideIndex:function(){
 				return currentSlide;
@@ -324,8 +323,8 @@
 		$(image).css({'-webkit-transform':'scale(1) translate3d('+position.endX+'px,'+position.endY+'px,0)'});
 		$(image).css({'-moz-transform':'scale(1) translate3d('+position.endX+'px,'+position.endY+'px,0)'});
 
-		this.transitionOut();
-		this.options.onSlideComplete();
+		//this.transitionOut(htmlNode);
+		
 	}
 
 
@@ -354,7 +353,7 @@
 		$(image).parent().animate({'opacity':1},that.options.fadeSpeed);
 
 		this.transitionOut();
-		this.options.onSlideComplete();
+
 	}
 
 	Plugin.prototype.transitionOut = function() {
