@@ -326,8 +326,10 @@
 		// Append the html for this slide and run the beginning animation
 		var $htmlNode = $(this.options.slides[currentSlide].html);		
 		$htmlNode.css({'position':'absolute','z-index':'10000'});
-		$(image).parent().append($htmlNode);														// add the html to the parent wrapper div
-		this.options.slides[currentSlide].onBegin();										// run the opening animation
+		
+		//$(image).parent().append($htmlNode);														// add the html to the parent wrapper div
+		this.options.copyNode.append($htmlNode);													// add the html to jquery doc node that was passed in to options
+		this.options.slides[currentSlide].onBegin();											// run the opening animation
 		
 		this.transitionOut($htmlNode);
 		
@@ -352,6 +354,7 @@
 		var sh = $(image).height();
 		var position = this.chooseCorner();
 
+		
 		$(image).css({'left':position.startX,'top':position.startY,'width':sw*(scale),'height':sh*(scale)});
 		$(image).animate({'left':position.endX,'top':position.endY,'width':sw,'height':sh}, that.options.duration + that.options.fadeSpeed);
 		
@@ -361,8 +364,10 @@
 		// Append the html for this slide and run the beginning animation
 		var $htmlNode = $(this.options.slides[currentSlide].html);		
 		$htmlNode.css({'position':'absolute','z-index':'10000'});
-		$(image).parent().append($htmlNode);														// add the html to the parent wrapper div
-		this.options.slides[currentSlide].onBegin();										// run the opening animation
+
+		//$(image).parent().append($htmlNode);														// add the html to the parent wrapper div
+		this.options.copyNode.append($htmlNode);													// add the html to jquery doc node that was passed in to options
+		this.options.slides[currentSlide].onBegin();											// run the opening animation
 		
 		this.transitionOut($htmlNode);
 
