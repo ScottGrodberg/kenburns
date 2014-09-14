@@ -356,12 +356,13 @@
 
 	}
 
-	Plugin.prototype.transitionOut = function() {
+	Plugin.prototype.transitionOut = function($htmlNode) {
 		var that = this;
 		var image = imagesObj["image"+currentSlide].element;
 
 		$(image).parent().delay(that.options.duration).animate({'opacity':0},that.options.fadeSpeed, function(){
 			$(this).css({'z-index':1});
+			$htmlNode.remove();
 		});
 	}
 
