@@ -314,16 +314,22 @@
 		//Set the wrapper to fully transparent and start it's animation
 		$(image).parent().css({'opacity':0,'z-index':'3'});
 		$(image).parent().animate({'opacity':1},that.options.fadeSpeed);
-
+	
 		//Add the transition back in
 		$(image).css({'-webkit-transition':'-webkit-transform '+(that.options.duration+that.options.fadeSpeed)+'ms '+that.options.ease3d});
 		$(image).css({'-moz-transition':'-moz-transform '+(that.options.duration+that.options.fadeSpeed)+'ms '+that.options.ease3d});
-
+		
 		//set the end position and scale, which fires the transition
 		$(image).css({'-webkit-transform':'scale(1) translate3d('+position.endX+'px,'+position.endY+'px,0)'});
 		$(image).css({'-moz-transform':'scale(1) translate3d('+position.endX+'px,'+position.endY+'px,0)'});
 
-		//this.transitionOut(htmlNode);
+		// Append the html for this slide and run the beginning animation
+		var $htmlNode = $(this.options.slides[currentSlide].html);		
+		$htmlNode.css({'position':'absolute','z-index':'10000'});
+		$(image).parent().append($htmlNode);														// add the html to the parent wrapper div
+		this.options.slides[currentSlide].onBegin();										// run the opening animation
+		
+		this.transitionOut($htmlNode);
 		
 	}
 
@@ -352,7 +358,13 @@
 		$(image).parent().css({'opacity':0,'z-index':3});
 		$(image).parent().animate({'opacity':1},that.options.fadeSpeed);
 
-		this.transitionOut();
+		// Append the html for this slide and run the beginning animation
+		var $htmlNode = $(this.options.slides[currentSlide].html);		
+		$htmlNode.css({'position':'absolute','z-index':'10000'});
+		$(image).parent().append($htmlNode);														// add the html to the parent wrapper div
+		this.options.slides[currentSlide].onBegin();										// run the opening animation
+		
+		this.transitionOut($htmlNode);
 
 	}
 
