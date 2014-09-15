@@ -396,6 +396,9 @@
 			$(this).css({'z-index':1});
 			$htmlNode.remove();
 		});
+		
+		// Slide out the message 2s before fadeOut
+		$htmlNode.delay(that.options.duration-3000).animate({'top':-800}, 830, 'easeInCubic', function() { $(this).remove(); });
 	}
 
 
