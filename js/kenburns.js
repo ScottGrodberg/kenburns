@@ -246,7 +246,35 @@
 	Plugin.prototype.chooseCorner = function() {
 		var scale = this.options.scale; 
 		var image = imagesObj["image"+currentSlide].element;
+		
+    var start, end;
+		
+		
+		if (this.options.slides[currentSlide].cornerStart && this.options.slides[currentSlide].cornerEnd) {
+		  // take the corners as defined by the client
+			  start = this.options.slides[currentSlide].cornerStart;
+				end = this.options.slides[currentSlide].cornerEnd;
+				
+		} else {
+		
+		  // pick randomly
+			var corners = [
+				{x:0,y:0}, // top left
+				{x:1,y:0}, // top right
+				{x:0,y:1}, // bottom left
+				{x:1,y:1}  // bottom right
+			];
 
+			//Pick the first corner. Remove it from the array 
+			var choice = Math.floor(Math.random()*4);
+			start = corners[choice];
+
+			//Pick the second corner from the subset
+			corners.splice(choice,1);
+			end = corners[Math.floor(Math.random()*3)];		  
+		}
+		
+		
 		var ratio = image.height/image.width;
 		var sw = Math.floor($(this.element).width()*(1/scale));
 		var sh = Math.floor($(this.element).width()*ratio*(1/scale));
@@ -259,20 +287,7 @@
 
 		//console.log(sw+ ", " + this.width);
 
-		var corners = [
-			{x:0,y:0},
-			{x:1,y:0},
-			{x:0,y:1},
-			{x:1,y:1}
-		];
 
-		//Pick the first corner. Remove it from the array 
-		var choice = Math.floor(Math.random()*4);
-		var start = corners[choice];
-
-		//Pick the second corner from the subset
-		corners.splice(choice,1);
-		var end = corners[Math.floor(Math.random()*3)];
 
 		//build the new coordinates from the chosen coordinates
 		var coordinates = {
