@@ -162,7 +162,7 @@
 		if(this.checkLoadProgress() == true) {
 			//reset the opacities and z indexes except the last and first images
 			$(this.element).find('.stalled').each(function(){
-				$(this).css({'opacity':1,'z-index':1});
+				$(this).css({'opacity':1,'z-index':-1});
 				$(this).removeClass('stalled');
 			});
 
@@ -327,7 +327,7 @@
 		$(image).css({'-moz-transform':'scale('+scale+') translate3d('+position.startX+'px,'+position.startY+'px,0)'});
 
 		//Set the wrapper to fully transparent and start it's animation
-		$(image).parent().css({'opacity':0,'z-index':'3'});
+		$(image).parent().css({'opacity':0,'z-index':'0'});
 		$(image).parent().animate({'opacity':1},that.options.fadeSpeed);
 	
 		//Add the transition back in
@@ -373,7 +373,7 @@
 		$(image).css({'left':position.startX,'top':position.startY,'width':sw*(scale),'height':sh*(scale)});
 		$(image).animate({'left':position.endX,'top':position.endY,'width':sw,'height':sh}, that.options.duration + that.options.fadeSpeed);
 		
-		$(image).parent().css({'opacity':0,'z-index':3});
+		$(image).parent().css({'opacity':0,'z-index':0});
 		$(image).parent().animate({'opacity':1},that.options.fadeSpeed);
 
 		// Append the html for this slide and run the beginning animation
@@ -393,7 +393,7 @@
 		var image = imagesObj["image"+currentSlide].element;
 
 		$(image).parent().delay(that.options.duration).animate({'opacity':0},that.options.fadeSpeed, function(){
-			$(this).css({'z-index':1});
+			$(this).css({'z-index':-1});
 			$htmlNode.remove();
 		});
 		
